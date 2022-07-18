@@ -59,3 +59,25 @@ mysql> DESCRIBE address_book;
 | phone_number | int(11)      | NO   |     | NULL    |       |
 +--------------+--------------+------+-----+---------+-------+
 8 rows in set (0.07 sec)
+
+-------------------------------------------------------------------------
+UC3-->Inserting values into a table
+-------------------------------------------------------------------------
+mysql>  insert into address_book(firstName,lastName,address,city,state,email,zipCode,Phone_number)values
+    -> ('Vishangi','Dabir','Panvel','Mumbai','Maharastra','Vishuv@gmail.com','410206','9087455'),
+    -> ('Madhushri','Naik','Edakochi','Kochi','Kerala','Madhu1@gmail.com','632216','8587453'),
+    -> ('Pravin','Kumar','Kalyan','Mumbai','Maharastra','kprav@gmail.com','410221','758745');
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from address_book;
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| firstName | lastName | address  | city   | state      | email            | zipCode | phone_number |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| Vishangi  | Dabir    | Panvel   | Mumbai | Maharastra | Vishuv@gmail.com |  410206 |      9087455 |
+| Madhushri | Naik     | Edakochi | Kochi  | Kerala     | Madhu1@gmail.com |  632216 |      8587453 |
+| Pravin    | Kumar    | Kalyan   | Mumbai | Maharastra | kprav@gmail.com  |  410221 |       758745 |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+3 rows in set (0.00 sec)
+
+
