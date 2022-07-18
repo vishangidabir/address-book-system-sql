@@ -22,3 +22,40 @@ mysql> show databases;
 
 mysql> use address_book_service;
 Database changed
+
+-----------------------------------------------------------
+UC2-->Create a table with address_book name
+-----------------------------------------------------------
+mysql> SELECT DATABASE();
++----------------------+
+| DATABASE()           |
++----------------------+
+| address_book_service |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> create table address_book
+    -> (firstName varchar(20) not null ,
+    -> lastName varchar(20) not null ,
+    -> address varchar(100) not null ,
+    -> city varchar(30) not null ,
+    -> state varchar(30) not null ,
+    -> email varchar(30) not null ,
+    -> zipCode int not null ,
+    -> phone_number int not null);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DESCRIBE address_book;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstName    | varchar(20)  | NO   |     | NULL    |       |
+| lastName     | varchar(20)  | NO   |     | NULL    |       |
+| address      | varchar(100) | NO   |     | NULL    |       |
+| city         | varchar(30)  | NO   |     | NULL    |       |
+| state        | varchar(30)  | NO   |     | NULL    |       |
+| email        | varchar(30)  | NO   |     | NULL    |       |
+| zipCode      | int(11)      | NO   |     | NULL    |       |
+| phone_number | int(11)      | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+8 rows in set (0.07 sec)
