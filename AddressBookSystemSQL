@@ -166,3 +166,26 @@ mysql> select count(state) from address_book;
 |            2 |
 +--------------+
 1 row in set (0.00 sec)
+
+---------------------------------------------------------------------------------
+UC8-->Sorted Alphabetically by person name
+---------------------------------------------------------------------------------
+
+
+mysql> select * from address_book;
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| firstName | lastName | address  | city   | state      | email            | zipCode | phone_number |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| Madhu     | Naik     | Edakochi | Kochi  | Kerala     | Madhu1@gmail.com |  632216 |      8587453 |
+| Pravin    | Kumar    | Kalyan   | Mumbai | Maharastra | kprav@gmail.com  |  410221 |       758745 |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+2 rows in set (0.01 sec)
+
+mysql> select * from address_book order by lastName;
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| firstName | lastName | address  | city   | state      | email            | zipCode | phone_number |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| Pravin    | Kumar    | Kalyan   | Mumbai | Maharastra | kprav@gmail.com  |  410221 |       758745 |
+| Madhu     | Naik     | Edakochi | Kochi  | Kerala     | Madhu1@gmail.com |  632216 |      8587453 |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+2 rows in set (0.43 sec)
