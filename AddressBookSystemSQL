@@ -24,7 +24,7 @@ mysql> use address_book_service;
 Database changed
 
 -----------------------------------------------------------
-UC2-->Create a table with address_book name
+UC2--> Create a table with address_book name
 -----------------------------------------------------------
 mysql> SELECT DATABASE();
 +----------------------+
@@ -61,7 +61,7 @@ mysql> DESCRIBE address_book;
 8 rows in set (0.07 sec)
 
 -------------------------------------------------------------------------
-UC3-->Inserting values into a table
+UC3--> Inserting values into a table
 -------------------------------------------------------------------------
 mysql>  insert into address_book(firstName,lastName,address,city,state,email,zipCode,Phone_number)values
     -> ('Vishangi','Dabir','Panvel','Mumbai','Maharastra','Vishuv@gmail.com','410206','9087455'),
@@ -80,4 +80,20 @@ mysql> select * from address_book;
 +-----------+----------+----------+--------+------------+------------------+---------+--------------+
 3 rows in set (0.00 sec)
 
+-----------------------------------------------------------------------------------------------------
+UC4--> Edit existing Contact with using their name
+----------------------------------------------------------------------------------------------------
 
+mysql> update address_book set firstName='Madhu' where lastName='Naik';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book;
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| firstName | lastName | address  | city   | state      | email            | zipCode | phone_number |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+| Vishangi  | Dabir    | Panvel   | Mumbai | Maharastra | Vishuv@gmail.com |  410206 |      9087455 |
+| Madhu     | Naik     | Edakochi | Kochi  | Kerala     | Madhu1@gmail.com |  632216 |      8587453 |
+| Pravin    | Kumar    | Kalyan   | Mumbai | Maharastra | kprav@gmail.com  |  410221 |       758745 |
++-----------+----------+----------+--------+------------+------------------+---------+--------------+
+3 rows in set (0.00 sec)
