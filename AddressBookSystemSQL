@@ -189,3 +189,84 @@ mysql> select * from address_book order by lastName;
 | Madhu     | Naik     | Edakochi | Kochi  | Kerala     | Madhu1@gmail.com |  632216 |      8587453 |
 +-----------+----------+----------+--------+------------+------------------+---------+--------------+
 2 rows in set (0.43 sec)
+
+-----------------------------------------------------------------------------------------------------
+UC9-->Ability to identify each Address Book with name and Type
+-----------------------------------------------------------------------------------------------------
+
+
+mysql> select * from address_book;
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+
+| firstName | lastName | address  | city      | state       | email             | zipCode | phone_number |
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+
+| Madhu     | Naik     | Edakochi | Kochi     | Kerala      | Madhu1@gmail.com  |  632216 |      8587453 |
+| Pravin    | Kumar    | Kalyan   | Mumbai    | Maharastra  | kprav@gmail.com   |  410221 |       758745 |
+| Ashu      | Rathod   | Kalyan   | Mumbai    | Maharastra  | Ashu16@gmail.com  |  411206 |      2587455 |
+| Shravan   | Kumar    | Ameerpet | Hyderabad | Telangana   | kshara@gmail.com  |  251206 |      9657455 |
+| Akshu     | Jadhav   | Chembur  | Mumbai    | Maharashtra | Ak2989a@gmail.com |  421206 |      8857455 |
+| Vishangi  | Dabir    | Panvel   | Mumbai    | Maharastra  | Vishuv@gmail.com  |  410206 |      9087455 |
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+
+6 rows in set (0.00 sec)
+
+mysql>  alter table address_book add bookName varchar(10) not null ,add conatctType varchar(30) not null;
+Query OK, 6 rows affected (0.08 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> describe address_book;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstName    | varchar(20)  | NO   |     | NULL    |       |
+| lastName     | varchar(20)  | NO   |     | NULL    |       |
+| address      | varchar(100) | NO   |     | NULL    |       |
+| city         | varchar(30)  | NO   |     | NULL    |       |
+| state        | varchar(30)  | NO   |     | NULL    |       |
+| email        | varchar(30)  | NO   |     | NULL    |       |
+| zipCode      | int(11)      | NO   |     | NULL    |       |
+| phone_number | int(11)      | NO   |     | NULL    |       |
+| bookName     | varchar(10)  | NO   |     | NULL    |       |
+| conatctType  | varchar(30)  | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+10 rows in set (0.02 sec)
+
+mysql> select * from address_book;
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
+| firstName | lastName | address  | city      | state       | email             | zipCode | phone_number | bookName | conatctType |
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
+| Madhu     | Naik     | Edakochi | Kochi     | Kerala      | Madhu1@gmail.com  |  632216 |      8587453 |          |             |
+| Pravin    | Kumar    | Kalyan   | Mumbai    | Maharastra  | kprav@gmail.com   |  410221 |       758745 |          |             |
+| Ashu      | Rathod   | Kalyan   | Mumbai    | Maharastra  | Ashu16@gmail.com  |  411206 |      2587455 |          |             |
+| Shravan   | Kumar    | Ameerpet | Hyderabad | Telangana   | kshara@gmail.com  |  251206 |      9657455 |          |             |
+| Akshu     | Jadhav   | Chembur  | Mumbai    | Maharashtra | Ak2989a@gmail.com |  421206 |      8857455 |          |             |
+| Vishangi  | Dabir    | Panvel   | Mumbai    | Maharastra  | Vishuv@gmail.com  |  410206 |      9087455 |          |             |
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> update address_book set bookname='IQ',conatctType='Friends' where firstname='Pravin' or firstname='Akshu';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update address_book set bookname='Kintu',ContactType='Family' where firstname='Shravan or firstname='Ashu'';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Ashu''' at line 1
+mysql> update address_book set bookname='Kintu',conatctType='Family' where firstname='Shravan or firstname='Ashu'';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Ashu''' at line 1
+mysql> update address_book set bookname='KI',conatctType='Friends' where firstname='Ashu' or firstname='Shravan';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update address_book set bookname='Man',conatctType='Profession' where firstname='Madhu' or firstname='Vishangi';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select *  from address_book;
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
+| firstName | lastName | address  | city      | state       | email             | zipCode | phone_number | bookName | conatctType |
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
+| Madhu     | Naik     | Edakochi | Kochi     | Kerala      | Madhu1@gmail.com  |  632216 |      8587453 | Man      | Profession  |
+| Pravin    | Kumar    | Kalyan   | Mumbai    | Maharastra  | kprav@gmail.com   |  410221 |       758745 | IQ       | Friends     |
+| Ashu      | Rathod   | Kalyan   | Mumbai    | Maharastra  | Ashu16@gmail.com  |  411206 |      2587455 | KI       | Friends     |
+| Shravan   | Kumar    | Ameerpet | Hyderabad | Telangana   | kshara@gmail.com  |  251206 |      9657455 | KI       | Friends     |
+| Akshu     | Jadhav   | Chembur  | Mumbai    | Maharashtra | Ak2989a@gmail.com |  421206 |      8857455 | IQ       | Friends     |
+| Vishangi  | Dabir    | Panvel   | Mumbai    | Maharastra  | Vishuv@gmail.com  |  410206 |      9087455 | Man      | Profession  |
++-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
+6 rows in set (0.00 sec)
