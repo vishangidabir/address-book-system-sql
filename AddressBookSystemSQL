@@ -258,15 +258,21 @@ mysql> update address_book set bookname='Man',conatctType='Profession' where fir
 Query OK, 2 rows affected (0.01 sec)
 Rows matched: 2  Changed: 2  Warnings: 0
 
-mysql> select *  from address_book;
+ select * from address_book;
 +-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
 | firstName | lastName | address  | city      | state       | email             | zipCode | phone_number | bookName | conatctType |
 +-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
 | Madhu     | Naik     | Edakochi | Kochi     | Kerala      | Madhu1@gmail.com  |  632216 |      8587453 | Man      | Profession  |
 | Pravin    | Kumar    | Kalyan   | Mumbai    | Maharastra  | kprav@gmail.com   |  410221 |       758745 | IQ       | Friends     |
-| Ashu      | Rathod   | Kalyan   | Mumbai    | Maharastra  | Ashu16@gmail.com  |  411206 |      2587455 | KI       | Friends     |
-| Shravan   | Kumar    | Ameerpet | Hyderabad | Telangana   | kshara@gmail.com  |  251206 |      9657455 | KI       | Friends     |
+| Ashu      | Rathod   | Kalyan   | Mumbai    | Maharastra  | Ashu16@gmail.com  |  411206 |      2587455 | KI       | Family      |
+| Shravan   | Kumar    | Ameerpet | Hyderabad | Telangana   | kshara@gmail.com  |  251206 |      9657455 | KI       | Family      |
 | Akshu     | Jadhav   | Chembur  | Mumbai    | Maharashtra | Ak2989a@gmail.com |  421206 |      8857455 | IQ       | Friends     |
 | Vishangi  | Dabir    | Panvel   | Mumbai    | Maharastra  | Vishuv@gmail.com  |  410206 |      9087455 | Man      | Profession  |
 +-----------+----------+----------+-----------+-------------+-------------------+---------+--------------+----------+-------------+
 6 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------
+UC10-->Ability to get number of contact persons i.e. count by type
+--------------------------------------------------------------------------------------------------
+
+
